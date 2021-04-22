@@ -1,0 +1,29 @@
+server:
+  port: 8086
+spring:
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3307/boot_db?useUnicode=true&charaterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: boot
+    password: boot
+    driverClassName: org.mariadb.jdbc.Driver
+  jpa:  
+    hibernate:
+      ddl-auto: create-drop 
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+    database-platform: org.hibernate.dialect.MariaDB103Dialect 
+    use-new-id-generator-mappings: false 
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+      type:
+        descriptor:
+          sql:
+            BasicBinder: TRACE 
