@@ -12,21 +12,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DBRunner implements ApplicationRunner {
-//	@Autowired
-	private final DataSource dataSource;
-	
-	public DBRunner(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+	@Autowired
+	private DataSource dataSource;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("DataSource 구현 클래스명 : " + dataSource.getClass());
+		System.out.println("DataSource 구현 클래스명 : " + dataSource.getClass().getName());
+		//alt + shift + l(엘)
 		Connection connection = dataSource.getConnection();
 		DatabaseMetaData metaData = connection.getMetaData();
 		System.out.println("DB URL => " + metaData.getURL());
 		System.out.println("DB Username => " + metaData.getUserName());
-		
 	}
 }

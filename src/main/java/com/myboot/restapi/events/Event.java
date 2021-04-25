@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.myboot.restapi.accounts.Account;
+import com.myboot.restapi.accounts.AccountSerializer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -49,7 +51,9 @@ public class Event {
 	private int limitOfEnrollment;
 	private boolean offline;
 	private boolean free;
+	//Account와 관계설정
 	@ManyToOne
+	@JsonSerialize(using = AccountSerializer.class)
 	private Account manager;
 	
 	@Enumerated(EnumType.STRING)
